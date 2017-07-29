@@ -1,0 +1,43 @@
+
+h2{
+  margin-top: 7%;
+  color: #2c3e50;
+}
+label{
+  color: #2c3e50;
+}
+.btn-success{
+  background-color: black;
+  border: none;
+}
+
+.btn-success:hover{
+  background-color: white;
+  color: black;
+}
+
+
+
+.input-group-addon{
+  background-color: black;
+}
+
+.gly{
+  color: white;
+}
+
+th{
+  text-align: center;
+}
+
+
+tr:hover td {
+   background: #ecf0f1;
+
+}
+
+td{
+  text-align: center;
+  color: #2c3e50;
+}
+

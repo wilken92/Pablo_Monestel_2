@@ -1,0 +1,83 @@
+<!-- Inicio de la sección registerTeacher, que contiene el formulario del profesor, registrar, modificar y listar-->
+<section id="registerPlayer">
+
+  <!-- Inicio del formulario  profesor: -->
+  <form name="frmRegisterPlayer" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+    <h1 class="text-center">Registro de jugadores</h1>
+    <hr>
+
+   <!--Inicio de los inpust para el formulario  -->
+
+    <label for="t">Código:</label>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="gly glyphicon glyphicon-asterisk"></i></span>
+      <input class="form-control" type="text" ng-model="vm.code" name="code" ng-minlength="7" ng-maxlength="9" required>
+    </div>
+
+    <label for="t">Nombre:</label>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="gly glyphicon glyphicon-user"></i></span>
+      <input class="form-control" type="text" ng-model="vm.name" name="name" required>
+    </div>
+
+    <label for="t">Alias:</label>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="gly glyphicon glyphicon-heart"></i></span>
+      <input class="form-control" type="text" ng-model="vm.nick" name="nick" required>
+    </div>
+
+    <label for="t">Cantidad de dinero:</label>
+    <div class="input-group">
+      <span class="input-group-addon"><i class="gly glyphicon glyphicon-usd"></i></span>
+       <input class="form-control" type="text" ng-model="vm.cant" name="cant" ng-minlength="7" ng-maxlength="9" required>
+    </div>
+
+    <!-- Botones de Seleccione foto, Registrar y Actualizar -->
+    <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
+    <hr>
+    <button class="col-md-12 btn btn-success" type="submit" ng-disabled="frmRegisterTeacher.$invalid">Registrar</button>
+    <br>
+    <br>
+    <input class="col-md-12 btn btn-success" type="button" value="Actualizar" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher)">
+
+  </form> <!-- Cierre del formulario profesor  -->
+
+<input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar..."> <!-- input de buscar profesor -->
+<div class="table-responsive">
+  <table class="table table-stripe"> <!-- Inicio de la tabla -->
+    <thead> <!-- Inicio del thead -->
+
+      <!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
+        <select ng-model="vm.statusFilter" name="statusFilter">
+          <option value="">--Seleccione un estado--</option>
+          <option value="Activo">Activo</option>
+          <option value="Inhabilitado">Inactivo</option>
+        </select> <!--cierre del filtro  -->
+
+      <tr> <!--Títulos para las tablas  -->
+        <th>Código</th>
+        <th>Nombre</th>
+        <th>Alias</th>
+        <th>Cantidad de dinero</th>
+        <th>Foto</th>
+      </tr> <!-- cierre de títulos -->
+    </thead> <!-- Cierre de la thead -->
+    <tbody> <!-- Incio del tbody -->
+      <tr ng-repeat="player in vm.players | filter:{status:vm.statusFilter} | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{player.code}}</td>
+        <td>{{player.name}}</td>
+        <td>{{player.nick}}</td>
+        <td>{{player.cant}}</td>
+        <td>{{player.status}}</td>
+        <td><img ng-src="{{player.photo}}" alt="Description" width="132px" height="170px"/></td>
+        <!-- Botones para cambiar el estado de las academias y editar-->
+        <td><input type="submit" value="Activo" ng-click="vm.active(player)"></td>
+        <td><input type="submit" value="Inactivo" ng-click="vm.inactive(player)"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(player)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+    </tbody> <!-- Cierre de la tbody -->
+  </table> <!-- Cierre de la tabla -->
+</div>
+</section> <!-- Cierre de la sección registerTeacher -->
