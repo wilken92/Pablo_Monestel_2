@@ -1,24 +1,19 @@
 {
-  "name": "ejemplo1",
+  "name": "pablomonestel-examen",
   "version": "1.0.0",
-  "description": "proyectocongulp",
-  "main": "app.js",
+  "description": "examen1",
+  "main": "Gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Arroba/App-FCT-GrupoArroba.git"
+    "url": "git+https://github.com/wilken92/pabloMonestelExamen.git"
   },
-  "author": "WilkenChG",
+  "author": "wilkenchg",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Arroba/App-FCT-GrupoArroba/issues"
+    "url": "https://github.com/wilken92/pabloMonestelExamen/issues"
   },
-  "homepage": "https://github.com/Arroba/App-FCT-GrupoArroba#readme",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-connect": "^5.0.0",
-    "nib": "^1.1.2"
-  }
+  "homepage": "https://github.com/wilken92/pabloMonestelExamen#readme"
 }
