@@ -15,7 +15,7 @@
   "bugs": {
     "url": "https://github.com/wilken92/pabloMonestelExamen/issues"
   },
-  "homepage": "https://github.com/wilken92/pabloMonestelExamen#readme",
+   "homepage": "https://github.com/wilken92/pabloMonestelExamen#readme",
    "dependencies": {
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
