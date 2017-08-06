@@ -9,6 +9,10 @@ body {
   max-width: 2000px;
 }
 
+label{
+  font-size: 0.8em;
+}
+
 .btn-info{
   background-color: black;
   border: none;
