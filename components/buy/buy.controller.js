@@ -2,7 +2,7 @@
   angular
     .module('testApp')
     .controller('buyController',buyController);
-    function buyController(buyService,$scope,playersService,proprietaryService){
+    function buyController(buyService,$scope,playersService,propertyService){
 
       var vm = this;
 
@@ -10,7 +10,7 @@
       function init(){
         vm.buy = buyService.getBuy();
         vm.playerRel = playersService.getPlayers();
-        vm.proprietaryRel = proprietaryService.getProprietary();
+        vm.propertyRel = propertyService.getProperty();
       }init(); // Cierre de la función init
 
       // Encargada de mostrar la información al usuario
@@ -60,7 +60,7 @@
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pBuy){
         vm.player = pBuy.player;
-        vm.proprietary = pBuy.proprietary;
+        vm.property = pBuy.property;
       } // Cierre de la función getInfo
 
       //función que cambia botones al precionar editar
@@ -75,7 +75,7 @@
         document.querySelector('#registrar').classList.remove('displayNone');
         var buyEdit = {
           player: vm.player,
-          proprietary: vm.proprietary
+          property: vm.property
         } // Cierre de buyEdit
         swal({
          type: 'success',
@@ -91,7 +91,7 @@
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
       function clean(){
         vm.player = '';
-        vm.proprietary = '';
+        vm.property = '';
 
       } // Cierre de la función clean
 
