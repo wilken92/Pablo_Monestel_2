@@ -33,12 +33,12 @@
 
                   <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
                     <label for="">Propiedad:</label>
-                    <input type="text" list="proprietaryList" ng-model="vm.proprietary" name="proprietary" required>
-                    <datalist id="proprietaryList">
+                    <input type="text" list="propertyList" ng-model="vm.property" name="property" required>
+                    <datalist id="propertyList">
                       <option value="">Seleccione una propiedad</option>
-                      <option ng-repeat="proprietary in vm.proprietaryRel" value="{{proprietary.name}}">{{vm.proprietary.name}}</option>
+                      <option ng-repeat="property in vm.propertyRel" value="{{property.name}}">{{vm.property.name}}</option>
                     </datalist>
-                    <div ng-messages="frmRegisterBuy.proprietary.$error">
+                    <div ng-messages="frmRegisterBuy.property.$error">
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div> <!--cierre del ng-messages -->
                   </md-input-container>

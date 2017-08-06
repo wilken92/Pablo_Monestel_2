@@ -29,7 +29,7 @@
       vm.save= function(){
         var newBuy = {
           player: vm.player,
-          proprietary: vm.proprietary
+          property: vm.property
         } // Cierre de newBuy
 
       if(vm.buy.length === 0){
