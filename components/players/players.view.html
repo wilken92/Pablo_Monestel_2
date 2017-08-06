@@ -5,7 +5,7 @@
         <!-- Inicio de la sección registerPlayer, que contiene el formulario del jugador, registrar, modificar y listar-->
         <section id="registerPlayer">
 
-          <h1>Jugadores</h1>
+          <h1 class="text-center">Jugadores</h1>
           <hr>
 
           <ul class="nav nav-tabs">
@@ -18,7 +18,7 @@
 
               <!--Inicio de los inpust para el formulario  -->
               <div class="" ng-show="pagina==1">
-                <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
                   <label for="">Código:</label>
                   <input type="number" ng-model="vm.code" name="code" min="0" required>
                   <div ng-messages="frmRegisterPreyers.code.$error">
