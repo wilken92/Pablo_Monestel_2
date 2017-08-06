@@ -1,6 +1,6 @@
 (function(){
   angular
-  .module('fctApp')
+  .module('testApp')
   .service('ImageService', ImageService);
 
   // Inicio de la función ImageService que se encarga de cargar las imágenes
@@ -11,7 +11,7 @@
       url:'https://api.cloudinary.com/v1_1/dxnv8pnia/image/upload',
       // Inicio del data
       data:{
-        upload_preset: 'examen1',
+        upload_preset: '1Laboratorio',
         tags:'Any',
         context:'photo=test'
       } // Cierre del data

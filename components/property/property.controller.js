@@ -1,15 +1,14 @@
 (function(){
   angular
     .module('testApp')
-    .controller('playersController',playersController);
-    function playersController(playersService,ImageService,Upload,$scope){
+    .controller('propertyController',propertyController);
+    function propertyController(propertyService,$scope){
 
       var vm = this;
-      vm.cloudObj = ImageService.getConfiguration();
 
       // Inicio de la función init que es la que se inicializa de primiera
       function init(){
-        vm.players = playersService.getPlayers();
+        vm.property = propertyService.getProperty();
       }init(); // Cierre de la función init
 
       // Encargada de mostrar la información al usuario
@@ -22,77 +21,56 @@
       }
       $scope.registro1 = function() {
         $scope.pagina = 1;
-      } // Cierre de la encargada de mostrar la información al usuario
+      }// Cierre de la encargada de mostrar la información al usuario
 
-      // Inicio de la función presave
-      vm.presave= function(newPlayer){
-        vm.cloudObj.data.file = document.getElementById("photo").files[0];
-        Upload.upload(vm.cloudObj)
-          .success(function(data){
-            newPlayer.photo = data.url;
-            vm.save(newPlayer);
-          }); // Cierre de la función success
-      } // Cierre de la función presave
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
-        var newPlayer = {
-          code: vm.code,
+        var newProperty = {
+          id: vm.id,
           name: vm.name,
-          firstName: vm.firstName,
-          lastName: vm.lastName,
-          alias: vm.alias,
-          money: Number(1000),
-          photo: vm.photo
-        } // Cierre de newPlayer
+          position: vm.position,
+          price: vm.price,
+          group: vm.group,
+          ownedby: vm.ownedby,
+          averageProbability: vm.averageProbability
+        } // Cierre de newProperty
 
       // intento de restringir los usuarios que se registran
-      if(vm.players.length === 0){
-         playersService.setPlayers(newPlayer);
+      if(vm.property.length === 0){
+         propertyService.setProperty(newProperty);
          clean();
          init();
          swal({
            type: 'success',
-           title: '¡Jugador Registrado!',
+           title: '¡Propiedad Registrada!',
            timer: 3000,
            showConfirmButton: false
          })
          return;
-
       } else{
-          for(var i = 0; i < vm.players.length; i++){
-            if(newPlayer.code == vm.players[i].code){
-              swal({
-               type: 'error',
-               title: '¡El código ya existe!',
-               timer: 3000,
-               showConfirmButton: false
-              })
-              return;
-          } else{
-               playersService.setPlayers(newPlayer);
+               propertyService.setProperty(newProperty);
                clean();
                init();
                swal({
                  type: 'success',
-                 title: '¡Jugador Registrado!',
+                 title: '¡Propiedad Registrada!',
                  timer: 3000,
                  showConfirmButton: false
                })
                return;
             }
-          }
-        }
       } // Cierre de la función save
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
-      vm.getInfo = function(pPlayer){
-        vm.code = pPlayer.code;
-        vm.name = pPlayer.name;
-        vm.firstName = pPlayer.firstName;
-        vm.lastName = pPlayer.lastName;
-        vm.alias = pPlayer.alias;
-        vm.photo = pPlayer.photo;
+      vm.getInfo = function(pProperty){
+        vm.id = pProperty.id;
+        vm.name = pProperty.name;
+        vm.position = pProperty.position;
+        vm.price = pProperty.price;
+        vm.group = pProperty.group;
+        vm.ownedby = pProperty.ownedby;
+        vm.averageProbability = pProperty.averageProbability;
       } // Cierre de la función getInfo
 
       //función que cambia botones al precionar editar
@@ -105,34 +83,36 @@
       vm.update = function(){
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
-        var playersEdit = {
-          code: vm.code,
+        var propertyEdit = {
+          id: vm.id,
           name: vm.name,
-          firstName: vm.firstName,
-          lastName: vm.lastName,
-          money: Number(1000),
-          alias: vm.alias,
-          photo: vm.photo
-        } // Cierre de playersEdit
+          position: vm.position,
+          price: vm.price,
+          group: vm.group,
+          ownedby: vm.ownedby,
+          averageProbability: vm.averageProbability
+        } // Cierre de PropertyEdit
         swal({
          type: 'success',
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
         })
-        playersService.updatePlayers(playersEdit);
+        propertyService.updateProperty(propertyEdit);
         init();
         clean();
       } // Cierre de la función update
 
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
       function clean(){
-        vm.code = '';
+        vm.id = '';
         vm.name = '';
-        vm.firstName = '';
-        vm.lastName = '';
-        vm.alias = '';
+        vm.position = '';
+        vm.price = '';
+        vm.group = '';
+        vm.ownedby = '';
+        vm.averageProbability = '';
       } // Cierre de la función clean
 
-    }// Cierre de la función playersController
+    }// Cierre de la función PropertyController
 })();

@@ -2,7 +2,6 @@
 var gulp = require('gulp');
 var nib = require('nib');
 var connect = require('gulp-connect');
-// var nodemon = require('gulp-nodemon');  levantar mongo.
 
 gulp.task('connect', function(){
 	connect.server({
@@ -10,7 +9,7 @@ gulp.task('connect', function(){
 		port: 8000,
 		livereload: true
 	});
-//	nodemon();
+
 });
 
 gulp.task('css',function(){

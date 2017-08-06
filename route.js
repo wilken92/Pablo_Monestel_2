@@ -10,6 +10,12 @@
   function configuration($stateProvider, $urlRouterProvider){
     $stateProvider
 
+    .state('landing',{
+      url : '/landing',
+      templateUrl: './components/landing/landing.view.html',
+      css:'css/style.css'
+    })
+
     .state('players',{
       url : '/players',
       templateUrl: './components/players/players.view.html',
@@ -23,6 +29,33 @@
       css:'css/style.css'
     })
 
-    $urlRouterProvider.otherwise('/players');
+    .state('property',{
+      url : '/property',
+      templateUrl: './components/property/property.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/property/property.controller.js')
+        }]
+      },
+      controller: 'propertyController',
+      controllerAs: 'vm',
+      css:'css/style.css'
+    })
+
+    .state('buy',{
+      url : '/buy',
+      templateUrl: './components/buy/buy.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/buy/buy.controller.js')
+        }]
+      },
+      controller: 'buyController',
+      controllerAs: 'vm',
+      css:'css/style.css'
+    })
+
+
+    $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
