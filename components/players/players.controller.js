@@ -39,8 +39,6 @@
         var newPlayer = {
           code: vm.code,
           name: vm.name,
-          firstName: vm.firstName,
-          lastName: vm.lastName,
           alias: vm.alias,
           money: Number(1000),
           photo: vm.photo
@@ -89,9 +87,8 @@
       vm.getInfo = function(pPlayer){
         vm.code = pPlayer.code;
         vm.name = pPlayer.name;
-        vm.firstName = pPlayer.firstName;
-        vm.lastName = pPlayer.lastName;
         vm.alias = pPlayer.alias;
+        vm.money = pPlayer.money;
         vm.photo = pPlayer.photo;
       } // Cierre de la función getInfo
 
@@ -108,9 +105,6 @@
         var playersEdit = {
           code: vm.code,
           name: vm.name,
-          firstName: vm.firstName,
-          lastName: vm.lastName,
-          money: Number(1000),
           alias: vm.alias,
           photo: vm.photo
         } // Cierre de playersEdit
@@ -129,9 +123,8 @@
       function clean(){
         vm.code = '';
         vm.name = '';
-        vm.firstName = '';
-        vm.lastName = '';
         vm.alias = '';
+
       } // Cierre de la función clean
 
     }// Cierre de la función playersController

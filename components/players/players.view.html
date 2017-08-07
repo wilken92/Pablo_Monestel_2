@@ -28,24 +28,8 @@
 
                   <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
                     <label for="">Nombre:</label>
-                    <input type="text" ng-model="vm.name" name="name" ng-maxlength="20" required>
+                    <input type="text" ng-model="vm.name" name="name" ng-maxlength="30" required>
                     <div ng-messages="frmRegisterPreyers.name.$error">
-                      <div ng-messages-include="components/includes/messages.html"></div>
-                    </div> <!--cierre del ng-messages -->
-                  </md-input-container>
-
-                  <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
-                    <label for="">Primer apellido:</label>
-                    <input type="text" ng-model="vm.firstName" name="firstName" ng-maxlength="20" required>
-                    <div ng-messages="frmRegisterPreyers.firstName.$error">
-                      <div ng-messages-include="components/includes/messages.html"></div>
-                    </div> <!--cierre del ng-messages -->
-                  </md-input-container>
-
-                  <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
-                    <label for="">Segundo apellido:</label>
-                    <input type="text" ng-model="vm.lastName" name="lastName" ng-maxlength="20" required>
-                    <div ng-messages="frmRegisterPreyers.lastName.$error">
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div> <!--cierre del ng-messages -->
                   </md-input-container>
@@ -57,6 +41,8 @@
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div> <!--cierre del ng-messages -->
                   </md-input-container>
+
+              
 
                   <!-- Botones de Seleccionar foto, Registrar y Actualizar -->
                   <div class="col-xs-12 col-sm-12 col-md-12">
@@ -106,15 +92,15 @@
               <md-card class="container-fluid col-sm-6 col-md-4" ng-repeat="player in vm.players | filter:vm.nameFilter">
                 <md-card-header>
                   <md-card-header-text>
-                    <span class="md-title">{{player.name}} {{player.firstName}} {{player.lastName}}</span>
+                    <span class="md-title">{{player.name}}</span>
                     <span class="md-subhead">{{player.code}}</span>
                   </md-card-header-text>
                 </md-card-header>
 
                 <md-card-title>
                   <md-card-title-text>
-                    <span class="md-subhead">Dinero: {{player.money}}</span>
                     <span class="md-subhead">Alias: {{player.alias}}</span>
+                    <span class="md-subhead">Dinero: {{1000}}</span>
                   </md-card-title-text>
                   <md-card-title-media>
                     <div class="md-media-lg card-media">
