@@ -8,10 +8,10 @@
 
     // Inicio del cloudObj
     var cloudObj = {
-      url:'https://api.cloudinary.com/v1_1/dxnv8pnia/image/upload',
+      url:'https://api.cloudinary.com/v1_1/wilkenchg-ucenfotec/image/upload',
       // Inicio del data
       data:{
-        upload_preset: '1Laboratorio',
+        upload_preset: 'testPabs',
         tags:'Any',
         context:'photo=test'
       } // Cierre del data
