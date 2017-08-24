@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wilken92/pabloMonestelExamen.git"
+    "url": "git+https://github.com/wilken92/Pablo_Monestel_2.git"
   },
   "author": "WilkenChG",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wilken92/pabloMonestelExamen/issues"
+    "url": "https://github.com/wilken92/Pablo_Monestel_2/issues"
   },
-  "homepage": "https://github.com/wilken92/pabloMonestelExamen#readme",
+  "homepage": "https://github.com/wilken92/Pablo_Monestel_2#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
     "body-parser": "^1.13.3",
