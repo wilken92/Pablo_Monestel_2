@@ -45,4 +45,4 @@ gulp.task('watch', function(){
 	],['js']);
 })
 
-gulp.task('examen1', ['connect','css','html','js','watch'])
+gulp.task('examen2', ['connect','css','html','js','watch'])
