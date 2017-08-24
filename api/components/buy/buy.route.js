@@ -9,17 +9,17 @@ router.param('id', function(req, res, next, id){
   next();
 });
 
-router.route('/save_blazes')
+router.route('/save_buy')
   .post(function(req,res){
     blazeController.save(req,res);
   });
 
-router.route('/get_all_blazes')
+router.route('/get_all_buy')
   .get(function(req,res){
     blazeController.findAll(req,res);
   });
 
-router.route('/update_blaze')
+router.route('/update_buy')
   .put(function(req, res){
     blazeController.update(req,res);
   });

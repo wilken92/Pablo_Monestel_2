@@ -1,48 +1,36 @@
-(function(){
+
+(function () {
   angular
   .module('testApp')
   .service('buyService', buyService);
 
-  // Inicio de función buyService
-  function buyService(){
-    var  buy = [];
-
+// Inicio de función blazeService.(Wilken)
+  function buyService($http){
+    var buy = [];
     var publicAPI = {
-      setBuy : _setBuy,
-      getBuy : _getBuy,
-      updateBuy : _updateBuy,
-    }; // Cierre del publicAPI
+     setBuy : _setBuy,
+     getBuy : _getBuy,
+     updateBuy : _updateBuy,
+    };// Cierre del publicAPI
     return publicAPI;
 
-    // Inicio de la funcion setBuy, que se encarga de registar los datos en el localStorage
+  // Inicio de la funcion setBuys, que se encarga de registar los datos en el localStorage.(Wilken)
     function _setBuy(pBuy){
-      var buyList = _getBuy();
-      buyList.push(pBuy);
-      localStorage.setItem('lsBuyList', JSON.stringify(buyList));
-    } // Cierre de la función setBuy
+     return $http.post('http://localhost:3000/api/save_buy',pBuy)
+    }// Cierre de la función setBuys.
 
-    // Inicio de la función getBuy, que se encarga de obtener los datos más actualizados
+    // Inicio de la función getBuys, que se encarga de obtener los datos más actualizados.(Wilken)
     function _getBuy(){
-      var buyList = JSON.parse(localStorage.getItem('lsBuyList'));
+      return $http.get('http://localhost:3000/api/get_all_buy');
+    }// Cierre de la función getBuys.
 
-
-      if(buyList == null){
-        buyList = buy;
-      }// Cierre del if
-
-      return buyList;
-    } // Cierre de la funcíon getBuy
-
-    // Inicio de la función updateBuy, que se encarga de permitir la edición de datos
+    // Inicio de la función updateBuys, que se encarga de permitir la edición de datos.(Wilken)
     function _updateBuy(pobjBuy){
-      var buyList = _getBuy();
-      for(var i = 0; i < buyList.length; i++){
-        if(buyList[i].id == pobjBuy.id){
-          buyList[i] = pobjBuy;
-        } // Cierre del if
-      } // Cierre del ciclo
-      localStorage.setItem('lsBuyList', JSON.stringify(buyList));
-    }// Fin de la función updateBuy
+     console.log(pobjBuy);
+        return $http.put('http://localhost:3000/api/update_buy',pobjBuy);
+    }// Cierre de la función updateBuys
 
-  }// Fin de función buyService
+  
+
+  }// Fin de función buyservice
 })();
