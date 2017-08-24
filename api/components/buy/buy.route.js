@@ -1,48 +1,27 @@
-(function(){
-  angular
-  .module('testApp')
-  .service('buyService', buyService);
+var express = require('express');
+var router = express.Router();
+var blazeController = require('./blaze.controller.js');
 
-  // Inicio de función buyService
-  function buyService(){
-    var  buy = [];
+//para aquellas rutas que ocupen un id
 
-    var publicAPI = {
-      setBuy : _setBuy,
-      getBuy : _getBuy,
-      updateBuy : _updateBuy,
-    }; // Cierre del publicAPI
-    return publicAPI;
+router.param('id', function(req, res, next, id){
+  req.body.id = id;
+  next();
+});
 
-    // Inicio de la funcion setBuy, que se encarga de registar los datos en el localStorage
-    function _setBuy(pBuy){
-      var buyList = _getBuy();
-      buyList.push(pBuy);
-      localStorage.setItem('lsBuyList', JSON.stringify(buyList));
-    } // Cierre de la función setBuy
+router.route('/save_blazes')
+  .post(function(req,res){
+    blazeController.save(req,res);
+  });
 
-    // Inicio de la función getBuy, que se encarga de obtener los datos más actualizados
-    function _getBuy(){
-      var buyList = JSON.parse(localStorage.getItem('lsBuyList'));
+router.route('/get_all_blazes')
+  .get(function(req,res){
+    blazeController.findAll(req,res);
+  });
 
+router.route('/update_blaze')
+  .put(function(req, res){
+    blazeController.update(req,res);
+  });
 
-      if(buyList == null){
-        buyList = buy;
-      }// Cierre del if
-
-      return buyList;
-    } // Cierre de la funcíon getBuy
-
-    // Inicio de la función updateBuy, que se encarga de permitir la edición de datos
-    function _updateBuy(pobjBuy){
-      var buyList = _getBuy();
-      for(var i = 0; i < buyList.length; i++){
-        if(buyList[i].id == pobjBuy.id){
-          buyList[i] = pobjBuy;
-        } // Cierre del if
-      } // Cierre del ciclo
-      localStorage.setItem('lsBuyList', JSON.stringify(buyList));
-    }// Fin de la función updateBuy
-
-  }// Fin de función buyService
-})();
+module.exports = router;

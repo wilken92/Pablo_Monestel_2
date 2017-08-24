@@ -1,48 +1,15 @@
-(function(){
-  angular
-  .module('testApp')
-  .service('buyService', buyService);
+//Requerimos mongoose
+var mongoose = require('mongoose');
+//Esquema de usuarios
+var BlazeSchema = new mongoose.Schema({
+  nameBlaze:String,
+  date1: Date,
+  time1: Date,
+  time2: Date,
+  date2: Date,
+  place: String,
+  status: String
+});
 
-  // Inicio de función buyService
-  function buyService(){
-    var  buy = [];
-
-    var publicAPI = {
-      setBuy : _setBuy,
-      getBuy : _getBuy,
-      updateBuy : _updateBuy,
-    }; // Cierre del publicAPI
-    return publicAPI;
-
-    // Inicio de la funcion setBuy, que se encarga de registar los datos en el localStorage
-    function _setBuy(pBuy){
-      var buyList = _getBuy();
-      buyList.push(pBuy);
-      localStorage.setItem('lsBuyList', JSON.stringify(buyList));
-    } // Cierre de la función setBuy
-
-    // Inicio de la función getBuy, que se encarga de obtener los datos más actualizados
-    function _getBuy(){
-      var buyList = JSON.parse(localStorage.getItem('lsBuyList'));
-
-
-      if(buyList == null){
-        buyList = buy;
-      }// Cierre del if
-
-      return buyList;
-    } // Cierre de la funcíon getBuy
-
-    // Inicio de la función updateBuy, que se encarga de permitir la edición de datos
-    function _updateBuy(pobjBuy){
-      var buyList = _getBuy();
-      for(var i = 0; i < buyList.length; i++){
-        if(buyList[i].id == pobjBuy.id){
-          buyList[i] = pobjBuy;
-        } // Cierre del if
-      } // Cierre del ciclo
-      localStorage.setItem('lsBuyList', JSON.stringify(buyList));
-    }// Fin de la función updateBuy
-
-  }// Fin de función buyService
-})();
+module.exports = mongoose.model('Blaze', BlazeSchema); //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose
+//User va en mayúscula y singular aunque en la bd todo se pone en minúscula y plural
