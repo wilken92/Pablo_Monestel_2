@@ -1,9 +1,9 @@
 {
-  "name": "/pabloMonestelExamen",
+  "name": "examen",
   "authors": [
-    "wchacong <wchacong@ucenfotec.ac.cr>"
+    "WilkenChG <wchacong@ucenfotec.ac.cr>"
   ],
-  "description": "Proyecto",
+  "description": "examen1",
   "main": "",
   "license": "MIT",
   "homepage": "",
