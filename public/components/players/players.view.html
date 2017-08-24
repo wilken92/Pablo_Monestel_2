@@ -1,0 +1,129 @@
+<a href="#!/landing" class="btn btn-info"  id="button-landing" role="button">Volver al Inicio</a>
+  <div class="main-panel">
+    <div class="container" >
+
+        <!-- Inicio de la sección registerPlayer, que contiene el formulario del jugador, registrar, modificar y listar-->
+        <section id="registerPlayer">
+
+          <h1 class="text-center">Jugadores</h1>
+          <hr>
+
+          <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
+            <li><a data-toggle="tab" ng-click="siguiente()" href="">Jugadores registrados</a></li>
+          </ul>
+
+          <!-- Inicio del formulario del jugador: -->
+          <form name="frmRegisterPlayers" id="frmRegisterPlayers" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+              <!--Inicio de los inpust para el formulario  -->
+              <div class="" ng-show="pagina==1">
+                <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
+                  <label for="">Código:</label>
+                  <input type="number" ng-model="vm.code" name="code" min="0" required>
+                  <div ng-messages="frmRegisterPlayers.code.$error">
+                    <div ng-messages-include="components/includes/messages.html"></div>
+                  </div> <!--cierre del ng-messages -->
+                </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
+                    <label for="">Nombre:</label>
+                    <input type="text" ng-model="vm.name" name="name" ng-maxlength="30" required>
+                    <div ng-messages="frmRegisterPlayers.name.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
+                    <label for="">Alias:</label>
+                    <input type="text" ng-model="vm.alias" name="alias" required>
+                    <div ng-messages="frmRegisterPlayers.alias.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+
+              
+
+                  <!-- Botones de Seleccionar foto, Registrar y Actualizar -->
+                  <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="input-group">
+                      <label class="input-group-btn">
+                          <span id="button-landing-two" class="btn btn-info">
+                              Seleccionar foto
+                              <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
+                          </span>
+                      </label>
+                    </div>
+
+                    <div class="col-xs-12">
+                      <div id="registrar">
+                        <md-button class="button Active" type="submit" ng-disabled="frmRegisterPlayers.$invalid">Registrar</md-button>
+                      </div>
+
+                      <div class="displayNone" id="actualizar">
+                        <md-button class="button edit" type="button" ng-disabled="frmRegisterPlayers.$invalid" ng-click="vm.update(player);siguiente()">Actualizar</md-button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+
+          </section> <!-- Cierre de la sección registerPlayer -->
+        </form> <!-- Cierre del formulario del jugador  -->
+      </div>
+
+      <div class="container" ng-show="pagina==2">
+
+          <!--Buscador de jugadores-->
+          <section class="inputSearch">
+            <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+              <form action="" class="search-form">
+                <div class="form-group has-feedback">
+                  <label for="Buscar" class="sr-only">Buscar</label>
+                  <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </form>
+            </div>
+          </section>
+
+          <div class="col-xs-12">
+            <!--inicio de los cards -->
+              <md-card class="container-fluid col-sm-6 col-md-4" ng-repeat="player in vm.players | filter:vm.nameFilter">
+                <md-card-header>
+                  <md-card-header-text>
+                    <span class="md-subhead">{{player.code}}</span>
+                    <span class="md-title">{{player.name}}</span>
+                  </md-card-header-text>
+                </md-card-header>
+
+                <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-subhead">Alias: {{player.alias}}</span>
+                    <span class="md-subhead">Dinero: {{1000}}</span>
+                  </md-card-title-text>
+                  <md-card-title-media>
+                    <div class="md-media-lg card-media">
+                      <img ng-src="{{player.photo}}" alt="Description" class="photoStudent">
+                    </div>
+                  </md-card-title-media>
+                </md-card-title>
+
+                <!-- Boton para cambiar el editar los jugadores -->
+                <md-card-actions id="buttons">
+                  <md-button class="edit" ng-click="vm.getInfo(player);vm.hideButton();registro1()">Editar</md-button>
+                <md-card-icon-actions> <!-- cierre botones  -->
+              <!--fin de los cards -->
+        </div>
+      </div>
+  </div>
+</div>
+ <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <p class="copyright text-muted">Copyright &copy; WilkenChG</p>
+                </div>
+            </div>
+        </div>
+    </footer>
