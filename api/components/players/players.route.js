@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var blazeController = require('./blaze.controller.js');
+var playersController = require('./players.controller.js');
 
 //para aquellas rutas que ocupen un id
 
@@ -9,19 +9,19 @@ router.param('id', function(req, res, next, id){
   next();
 });
 
-router.route('/save_blazes')
+router.route('/save_players')
   .post(function(req,res){
-    blazeController.save(req,res);
+    playersController.save(req,res);
   });
 
-router.route('/get_all_blazes')
+router.route('/get_all_players')
   .get(function(req,res){
-    blazeController.findAll(req,res);
+    playersController.findAll(req,res);
   });
 
-router.route('/update_blaze')
+router.route('/update_player')
   .put(function(req, res){
-    blazeController.update(req,res);
+    playersController.update(req,res);
   });
 
 module.exports = router;

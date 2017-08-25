@@ -8,7 +8,7 @@ var express = require('express'),
 
 // Se establece una conexión con mongoose por medio de las siguientes variables
 var db = mongoose.connection,
-    dburl = 'mongodb://dbuser:dbpassword@ds159493.mlab.com:59493/examen_monestel2',
+    dburl = 'mongodb://wilkenchg92:Zeus8981092@ds159493.mlab.com:59493/examen_monestel2',
     port = 3000;
 // se le indica al servidor la tarea a ejecutar
 var server = app.listen(port,_server());
@@ -38,15 +38,13 @@ app.use( function(req, res, next){
 });
 // Se definen las rutas que van estar ligadas a toda la funcionalidad de la aplicacion
 var index = require('./index'),
-    academiesRoutes = require('./components/academies/academy.route'),
-    beneficientsRoutes = require('./components/beneficientAssociation/beneficient.route'),
-    blazesRoutes = require('./components/blazes/blaze.route'),
-    blazesRoutes = require('./components/blazes/blaze.route'),
+    buysRoutes = require('./components/buy/buy.route'),
+    playersRoutes = require('./components/players/players.route'),
+    propertiesRoutes = require('./components/property/property.route'),
 // Se definen las rutas de los servicios con las que se conecta el front-end
-app.use('/api', academiesRoutes);
-app.use('/api', beneficientsRoutes);
-app.use('/api', blazesRoutes);
-app.use('/api', blazesRoutes);
+app.use('/api', buysRoutes);
+app.use('/api', playersRoutes);
+app.use('/api', propertiesRoutes);
 
 app.use('/', index);
 

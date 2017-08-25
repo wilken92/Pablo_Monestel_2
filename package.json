@@ -2,7 +2,7 @@
 {
   "name": "ejemplo1",
   "version": "1.0.0",
-  "description": "proyectocongulp",
+  "description": "examen2Pabs",
   "main": "api/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
