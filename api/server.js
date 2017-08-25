@@ -40,7 +40,7 @@ app.use( function(req, res, next){
 var index = require('./index'),
     buysRoutes = require('./components/buy/buy.route'),
     playersRoutes = require('./components/players/players.route'),
-    propertiesRoutes = require('./components/property/property.route'),
+    propertiesRoutes = require('./components/property/property.route');
 // Se definen las rutas de los servicios con las que se conecta el front-end
 app.use('/api', buysRoutes);
 app.use('/api', playersRoutes);
