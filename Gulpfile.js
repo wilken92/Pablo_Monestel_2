@@ -1,8 +1,8 @@
 'use strict';
 var gulp = require('gulp');
 var nib = require('nib');
+var nodemon = require('gulp-nodemon');
 var connect = require('gulp-connect');
-var nodemon = require('gulp-nodemon');  
 
 gulp.task('connect', function(){
 	connect.server({
@@ -14,7 +14,7 @@ gulp.task('connect', function(){
 });
 
 gulp.task('css',function(){
-	gulp.src('./a/css/*.css')
+	gulp.src('./public/css/*.css')
 	.pipe(connect.reload())
 })
 
@@ -36,7 +36,7 @@ gulp.task('watch', function(){
 	    './public/components/**/**/*.css'
     ],['css']);
 
-	
+
 	gulp.watch([
 	  	'./public/*.js',
 	    './public/components/*.js',
@@ -48,7 +48,7 @@ gulp.task('watch', function(){
 	    './api/components/**/**/*.js'
  	],['js']);
 
-	
+
 	gulp.watch([
 		'./public/*.html',
 	    './public/components/*.html',
@@ -59,4 +59,3 @@ gulp.task('watch', function(){
 })
 
 gulp.task('examen2', ['connect','css','html','js','watch'])
-

@@ -12,8 +12,8 @@
 
     .state('landing',{
       url : '/landing',
-      templateUrl: './components/landing/landing.view.html',
-      css:'css/style.css'
+      templateUrl: './components/landing/landing.html',
+      css:'css/styleLanding.css'
     })
 
     .state('players',{

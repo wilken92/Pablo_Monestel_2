@@ -20,21 +20,13 @@ md-card:hover{
   
 }
 
-.btn .btn-info:hover{
-  background: red;
-}
-
 
 
 .btn-info{
   background-color: black;
   border: none;
 }
-.btn-info:hover{
-  background-color: transparent;
-  color: black;
-  border: none;
-}
+
 #button-landing{
   background-color: black;
   border: none;
@@ -328,7 +320,6 @@ footer .copyright {
     font-size: 36px;
   }
 }
-
 
 
 /*Estilos generales*/

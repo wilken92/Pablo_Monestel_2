@@ -10,6 +10,7 @@ var express = require('express'),
 var db = mongoose.connection,
     dburl = 'mongodb://wilkenchg92:Zeus8981092@ds159493.mlab.com:59493/examen_monestel2',
     port = 3000;
+
 // se le indica al servidor la tarea a ejecutar
 var server = app.listen(port,_server());
 
@@ -38,14 +39,14 @@ app.use( function(req, res, next){
 });
 // Se definen las rutas que van estar ligadas a toda la funcionalidad de la aplicacion
 var index = require('./index'),
-    buysRoutes = require('./components/buy/buy.route'),
-    playersRoutes = require('./components/players/players.route'),
-    propertiesRoutes = require('./components/property/property.route');
-// Se definen las rutas de los servicios con las que se conecta el front-end
-app.use('/api', buysRoutes);
-app.use('/api', playersRoutes);
-app.use('/api', propertiesRoutes);
+    playerRoutes = require('./components/players/player.route'),
+    propertyRoutes = require('./components/property/property.route'),
+    buyRoutes = require('./components/buy/buy.route');
 
+// Se definen las rutas de los servicios con las que se conecta el front-end
+app.use('/api', playerRoutes);
+app.use('/api', propertyRoutes);
+app.use('/api', buyRoutes);
 app.use('/', index);
 
 // Se guarda todo lo que se ha realizado

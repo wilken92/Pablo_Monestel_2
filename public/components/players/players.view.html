@@ -1,3 +1,4 @@
+
 <a href="#!/landing" class="btn btn-info"  id="button-landing" role="button">Volver al Inicio</a>
 <div class="main-panel">
   <div class="container" >
@@ -41,8 +42,6 @@
               <div ng-messages-include="components/includes/messages.html"></div>
             </div> <!--cierre del ng-messages -->
           </md-input-container>
-
-          
 
           <!-- Botones de Seleccionar foto, Registrar y Actualizar -->
           <div class="col-xs-12 col-sm-12 col-md-12">
@@ -100,7 +99,7 @@
         <md-card-title>
           <md-card-title-text>
             <span class="md-subhead">Alias: {{player.alias}}</span>
-            <span class="md-subhead">Dinero: {{1000}}</span>
+            <span class="md-subhead">Dinero: {{player.money}}</span>
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-lg card-media">
@@ -111,7 +110,7 @@
 
         <!-- Boton para cambiar el editar los jugadores -->
         <md-card-actions id="buttons">
-          <md-button class="edit" ng-click="vm.getInfo(player);vm.hideButton();registro1()">Editar</md-button>
+          <md-button class="edit" ng-click="vm.getInfo(player);vm.hideButton();registro1()">Modificar</md-button>
           <md-card-icon-actions> <!-- cierre botones  -->
             <!--fin de los cards -->
           </div>

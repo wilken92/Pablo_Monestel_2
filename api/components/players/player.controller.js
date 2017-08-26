@@ -1,20 +1,21 @@
-var Player = require('./players.model.js');
+var Player = require('./player.model.js');
 
 module.exports.save = function(req, res){
   var newPlayer = new Player({
+    code: req.body.code,
     name: req.body.name,
-    direction : req.body.direction,
-    phone: req.body.phone,
-    email: req.body.email,
-    contact: req.body.contact,
-    status: req.body.status
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    alias: req.body.alias,
+    money: req.body.money,
+    photo: req.body.photo
   });
 
   newPlayer.save(function(err){
     if(err){
-      res.json({success:false, msg:'No se pudo registrar el jugador' + err});
+      res.json({success:false, msg:'No se pudo realizar la compra' + err});
     }else{
-      res.json({success:true, msg:'Se registró el jugador correctamente'});
+      res.json({success:true, msg:'Se registró correctamente'});
     }
   });
 }
@@ -26,8 +27,7 @@ module.exports.findAll = function(req,res){
 };
 
 module.exports.update = function(req,res){
-
-  Buy.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, player) {
+  Player.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, player) {
     if (err){
       res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
 
