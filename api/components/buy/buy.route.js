@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var blazeController = require('./blaze.controller.js');
+var buyController = require('./buy.controller.js');
 
 //para aquellas rutas que ocupen un id
 
@@ -11,17 +11,12 @@ router.param('id', function(req, res, next, id){
 
 router.route('/save_buy')
   .post(function(req,res){
-    blazeController.save(req,res);
-  });
+    buyController.save(req,res);
 
+  });
 router.route('/get_all_buy')
   .get(function(req,res){
-    blazeController.findAll(req,res);
-  });
-
-router.route('/update_buy')
-  .put(function(req, res){
-    blazeController.update(req,res);
+    buyController.findAll(req,res);
   });
 
 module.exports = router;

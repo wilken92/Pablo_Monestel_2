@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var propertyController = require('./property.controller.js');
+var playerController = require('./player.controller.js');
 
 //para aquellas rutas que ocupen un id
 
@@ -9,19 +9,19 @@ router.param('id', function(req, res, next, id){
   next();
 });
 
-router.route('/save_property')
+router.route('/save_player')
   .post(function(req,res){
-    propertyController.save(req,res);
+    playerController.save(req,res);
 
   });
-router.route('/get_all_property')
+router.route('/get_all_player')
   .get(function(req,res){
-    propertyController.findAll(req,res);
+    playerController.findAll(req,res);
   });
 
- router.route('/update_property')
+ router.route('/update_player')
   .put(function(req, res){
-    propertyController.update(req,res);
+    playerController.update(req,res);
  	});
 
 module.exports = router;

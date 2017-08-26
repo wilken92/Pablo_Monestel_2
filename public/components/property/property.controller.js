@@ -2,14 +2,24 @@
   angular
     .module('testApp')
     .controller('propertyController',propertyController);
-    function propertyController(propertyService,$scope){
+
+    propertyController.$inject = ['propertyService','ImageService','Upload','$scope'];
+
+
+    function propertyController(propertyService,ImageService,Upload,$scope){
 
       var vm = this;
+      vm.property = "";
+      loadProperty();
 
-      // Inicio de la función init que es la que se inicializa de primiera
-      function init(){
-        vm.property = propertyService.getProperty();
-      }init(); // Cierre de la función init
+      function loadProperty(){
+        propertyService.getProperty().then(function (response) {
+            vm.property = response.data;
+          });
+
+          vm.cloudObj = ImageService.getConfiguration();
+
+        }
 
       // Encargada de mostrar la información al usuario
       $scope.pagina = 1;
@@ -23,54 +33,81 @@
         $scope.pagina = 1;
       }// Cierre de la encargada de mostrar la información al usuario
 
+      // Inicio de la función presave
+      vm.presave= function(newProperty){
+        vm.cloudObj.data.file = document.getElementById("photo").files[0];
+        Upload.upload(vm.cloudObj)
+          .success(function(data){
+            newProperty.photo = data.url;
+            vm.save(newProperty);
+          }); // Cierre de la función success
+      } // Cierre de la función presave
+
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
         var newProperty = {
-          id: vm.id,
+          code: vm.code,
           name: vm.name,
-          position: vm.position,
           price: vm.price,
-          group: vm.group,
-          ownedby: vm.ownedby,
-          averageProbability: vm.averageProbability
+          photo: vm.photo
+      
         } // Cierre de newProperty
 
       // intento de restringir los usuarios que se registran
       if(vm.property.length === 0){
          propertyService.setProperty(newProperty);
          clean();
-         init();
+         loadProperty();
          swal({
            type: 'success',
-           title: '¡Propiedad Registrada!',
+           title: '¡Registro completado!',
            timer: 3000,
            showConfirmButton: false
-         })
+         }).then(
+              function () {},
+              // handling the promise rejection
+              function (dismiss) {
+                if (dismiss === 'timer') {
+                  console.log('Registro exitoso')
+                }
+              }
+            )
          return;
       } else{
-               propertyService.setProperty(newProperty);
-               clean();
-               init();
-               swal({
-                 type: 'success',
-                 title: '¡Propiedad Registrada!',
-                 timer: 3000,
-                 showConfirmButton: false
-               })
-               return;
-            }
-      } // Cierre de la función save
+        propertyService.setProperty(newProperty).then(function (response) {
+          vm.code = null;
+          vm.name = null;
+          vm.price = null;
+          vm.photo = null;
+        loadProperty();
+         });
+           swal({
+             type: 'success',
+             title: '¡Registro completado!',
+             timer: 3000,
+             showConfirmButton: false
+           }).then(
+              function () {},
+              // handling the promise rejection
+              function (dismiss) {
+                if (dismiss === 'timer') {
+                console.log('Registro exitoso')
+                }
+              }
+            )
+          return;
+        }
+  } // Cierre de la función save
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pProperty){
-        vm.id = pProperty.id;
+        vm.id = pProperty._id;
+        vm.code = pProperty.code;
         vm.name = pProperty.name;
-        vm.position = pProperty.position;
         vm.price = pProperty.price;
-        vm.group = pProperty.group;
-        vm.ownedby = pProperty.ownedby;
-        vm.averageProbability = pProperty.averageProbability;
+        vm.photo = pProperty.photo;
+        ;
       } // Cierre de la función getInfo
 
       //función que cambia botones al precionar editar
@@ -84,35 +121,46 @@
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
         var propertyEdit = {
-          id: vm.id,
+          _id : vm.id,
+          code: vm.code,
           name: vm.name,
-          position: vm.position,
           price: vm.price,
-          group: vm.group,
-          ownedby: vm.ownedby,
-          averageProbability: vm.averageProbability
-        } // Cierre de PropertyEdit
+          photo: vm.photo,
+          
+        } // Cierre de propertyEdit
         swal({
          type: 'success',
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
-        propertyService.updateProperty(propertyEdit);
-        init();
+        }).then(
+             function () {},
+             // handling the promise rejection
+             function (dismiss) {
+               if (dismiss === 'timer') {
+                 console.log('Información actualizada')
+               }
+             }
+           )
+        propertyService.updateProperty(propertyEdit).then(function(response){
+          propertyService.getProperty()
+            .then(function(response){
+              vm.property = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+         });
+        loadProperty();
         clean();
       } // Cierre de la función update
 
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
       function clean(){
-        vm.id = '';
+        vm.code = '';
         vm.name = '';
-        vm.position = '';
         vm.price = '';
-        vm.group = '';
-        vm.ownedby = '';
-        vm.averageProbability = '';
       } // Cierre de la función clean
 
-    }// Cierre de la función PropertyController
+    }// Cierre de la función propertyController
 })();

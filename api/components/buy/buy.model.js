@@ -2,13 +2,8 @@
 var mongoose = require('mongoose');
 //Esquema de usuarios
 var BuySchema = new mongoose.Schema({
-  nameBlaze:String,
-  date1: Date,
-  time1: Date,
-  time2: Date,
-  date2: Date,
-  place: String,
-  status: String
+  player: String,
+  property: String
 });
 
 module.exports = mongoose.model('Buy', BuySchema); //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose

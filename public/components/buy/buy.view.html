@@ -1,8 +1,9 @@
+
 <a href="#!/landing" class="btn btn-info"  id="button-landing" role="button">Volver al Inicio</a>
 <div class="main-panel">
   <div class="container" >
 
-    <!-- Inicio de la sección registerBuy, que contiene el formulario del jugador, registrar, modificar y listar-->
+    <!-- Inicio de la sección registerBuy, que contiene el formulario del compra, registrar, modificar y listar-->
     <section id="registerBuy">
 
       <h1 class="text-center">Comprar propiedades</h1>
@@ -13,7 +14,7 @@
         <li><a data-toggle="tab" ng-click="siguiente()" href="">Propiedades compradas</a></li>
       </ul>
 
-      <!-- Inicio del formulario del jugador: -->
+      <!-- Inicio del formulario del compra: -->
       <form name="frmRegisterBuy" novalidate autocomplete="off">
 
         <!--Inicio de los inpust para el formulario  -->
@@ -64,7 +65,7 @@
 
 <div class="container" ng-show="pagina==2">
 
-  <!--Buscador de jugadores-->
+  <!--Buscador de compras-->
   <section class="inputSearch">
     <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
       <form action="" class="search-form">
@@ -83,12 +84,12 @@
       <md-card-header>
         <md-card-header-text>
           <span class="md-title">{{buy.player}}</span>
-          <span class="md-subhead">{{buy.property}}</span>
         </md-card-header-text>
       </md-card-header>
 
       <md-card-title>
         <md-card-title-text>
+        <span class="md-subhead">{{buy.property}}</span>
         </md-card-title-text>
         <md-card-title-media>
           <div class="md-media-md card-media">
@@ -96,9 +97,9 @@
         </md-card-title-media>
       </md-card-title>
 
-      <!-- Boton para cambiar el editar los jugadores -->
+      <!-- Boton para cambiar el editar los compras -->
       <md-card-actions id="buttons">
-        <md-button class="edit" ng-click="vm.getInfo(buy);vm.hideButton();registro1()">Editar</md-button>
+        <md-button class="edit" ng-click="vm.getInfo(buy);vm.hideButton();registro1()">Modificar</md-button>
         <md-card-icon-actions> <!-- cierre botones  -->
           <!--fin de los cards -->
         </div>
@@ -115,3 +116,4 @@
       </div>
     </div>
   </footer>
+

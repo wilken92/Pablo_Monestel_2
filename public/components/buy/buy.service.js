@@ -1,36 +1,28 @@
-
-(function () {
+(function(){
   angular
   .module('testApp')
   .service('buyService', buyService);
 
-// Inicio de función blazeService.(Wilken)
+  // Inicio de función buyService
   function buyService($http){
-    var buy = [];
+    var  buy = [];
     var publicAPI = {
-     setBuy : _setBuy,
-     getBuy : _getBuy,
-     updateBuy : _updateBuy,
-    };// Cierre del publicAPI
+      setBuy : _setBuy,
+      getBuy : _getBuy
+    }; // Cierre del publicAPI
     return publicAPI;
 
-  // Inicio de la funcion setBuys, que se encarga de registar los datos en el localStorage.(Wilken)
+    // Inicio de la funcion setBuy, que se encarga de registar los datos en el localStorage
     function _setBuy(pBuy){
-     return $http.post('http://localhost:3000/api/save_buy',pBuy)
-    }// Cierre de la función setBuys.
+      return $http.post('http://localhost:3000/api/save_buy',pBuy)
 
-    // Inicio de la función getBuys, que se encarga de obtener los datos más actualizados.(Wilken)
+    } // Cierre de la función setBuy
+
+    // Inicio de la función getBuy, que se encarga de obtener los datos más actualizados
     function _getBuy(){
       return $http.get('http://localhost:3000/api/get_all_buy');
-    }// Cierre de la función getBuys.
 
-    // Inicio de la función updateBuys, que se encarga de permitir la edición de datos.(Wilken)
-    function _updateBuy(pobjBuy){
-     console.log(pobjBuy);
-        return $http.put('http://localhost:3000/api/update_buy',pobjBuy);
-    }// Cierre de la función updateBuys
+    } // Cierre de la funcíon getBuy
 
-  
-
-  }// Fin de función buyservice
+  }// Fin de función buyService
 })();
